@@ -16,8 +16,23 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(StringDeger) {
+  if(StringDeger===""){
+    return StringDeger;
+  }
+  let DosyaPart;
+  let DosyaNameBolme;
+  if(DosyaPart=StringDeger.split('/')){//[C:,Users,johnsmith,Music,Beethoven_5.mp3]
+    let Dosya=DosyaPart.pop();//[Beethoven_5.mp3];
+    return Dosya;
+  }
+  else if(DosyaNameBolme=Dosya.split('.')){//Burada  Dosyanın elemanını kontrol ediyoruz 1 den büyükse pop edip gönderiyoruz.
+    let DosyaNameKontrol=DosyaNameBolme.length>1?DosyaNameBolme.pop():null;
+    return DosyaNameKontrol;
+  }
+  else {
+    return StringDeger;
+  }
 }
 
 /*
@@ -37,11 +52,23 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek input:  [109, 216, 288, 143, 71, 185, -278, 194, 5]
   örnek output: 104
 */
+//const array=[50, -26, 153, 7]
+function ortalamaBul(Array) {
+  if(Array.length===0){
+    return null;
+  }
+  if(Array.length===1){
+    let temp=Array[0];
+    return temp;
+  }
+  let toplam=0;
+  for(let i=0;i<Array.length;i++){
+      toplam+=Array[i];
+    }
+  return toplam=toplam/Array.length;
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
 }
-
+//console.log(ortalamaBul(array));
 /*
   GÖREV 3
   - Input:  Bir sayı arrayini ve ortalama bulmaya yarayacak bir fonksiyonu parametre olarak alacak bir fonksiyon oluştur.
@@ -61,11 +88,21 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek input:  [109, 216, 288, 143, 71, 185, -278, 194, 5]
   örnek output: [109, 216, 288, 143, 185, 194]
 */
-
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
+const array=[109, 216, 288, 143, 71, 185, -278, 194, 5]
+function ortalamadanBuyukleriBul(Input,OrtFonk) {
+  if(Input.length===0){
+    return null;
+  }
+  let Array=ortalamaBul(Input);
+  let newDizi=[];
+  for(let i=0;i<Input.length;i++){
+    if(Input[i]>=Array){
+      newDizi.push(Input[i]);
+    }
+  }
+  return newDizi;
 }
-
+console.log(ortalamadanBuyukleriBul(array,ortalamaBul));
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
   console.log("Kodlar sorunsuz çalışıyor!");
